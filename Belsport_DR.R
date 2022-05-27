@@ -16,8 +16,7 @@ remove(list = ls())
 Fecha=format(Sys.Date(), "%d-%m-%Y")
 Mes<-months.Date(today())
 Mes<-unlist(lapply(Mes,FUN=toTitleCase))
-dir=paste0("C:/Users/jiarc/Desktop/Practica","/",Mes,"/",Fecha)
-#dir=paste0("G:/Unidades compartidas/UMM/2020/8. Webscraping/4_Levantamiento_Semanal","/",Mes,"/",Fecha)
+dir=paste0("C:/Users/David/Desktop/FEN/Decimo Semestre/Práctica/GIT/Generados/","/",Mes,"/",Fecha)
 dir2=paste0(dir,"/","Links")
 setwd(dir2)
 
@@ -66,7 +65,7 @@ links2.2<-read.xlsx("belsport.xlsx")
 
 ###Paso 7 ----> Scrapear cada producto a través de Ciclo For
 tablaPreciosF<-matrix(NA,0,8)
-for (i in 1:5) {
+for (i in 1:nrow(links2.2)) {
   tryCatch({
   url<-paste(link,links2.2$linksPF1[i],sep = "")  
   NombreProducto<-unique(scrap(url,".trimName"))
